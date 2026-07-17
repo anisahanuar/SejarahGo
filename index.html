@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#081426" />
+  <meta name="description" content="SejarahGo – permainan pengembaraan Sejarah Tingkatan 1 dengan sembilan jenis permainan mini dwibahasa." />
+  <title>SejarahGo: Multi-Mission Adventure</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <noscript>
+    <div class="noscript">JavaScript diperlukan untuk memainkan SejarahGo.</div>
+  </noscript>
+
+  <div id="app" class="app">
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <section id="splashScreen" class="screen splash-screen is-active" aria-label="Loading">
+      <div class="splash-orbit" aria-hidden="true">
+        <span>🏺</span><span>📜</span><span>🧭</span><span>🪙</span>
+      </div>
+      <div class="logo-lockup logo-lockup--splash">
+        <div class="logo-mark">S</div>
+        <div>
+          <p class="eyebrow">HISTORY ADVENTURE</p>
+          <h1>Sejarah<span>Go</span></h1>
+        </div>
+      </div>
+      <div class="loading-track"><span></span></div>
+      <p class="loading-copy" data-i18n="loading">Menyediakan pengembaraan sejarah...</p>
+    </section>
+
+    <header id="topBar" class="topbar is-hidden">
+      <button class="icon-btn" id="homeBtn" data-action="home" aria-label="Home">⌂</button>
+      <div class="topbar-brand">
+        <span class="mini-logo">S</span>
+        <strong>SejarahGo</strong>
+      </div>
+      <div class="resource-cluster" aria-label="Player resources">
+        <span class="resource-pill" title="Coins">🪙 <b id="coinDisplay">0</b></span>
+        <span class="resource-pill" title="XP">⚡ <b id="xpDisplay">0</b></span>
+        <button class="avatar-chip" id="profileChip" data-action="characters" aria-label="Character">
+          <img id="profileAvatar" src="assets/characters/cartoon-amir.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="screen home-screen">
+        <div class="home-parallax" aria-hidden="true">
+          <div class="cloud cloud-1"></div>
+          <div class="cloud cloud-2"></div>
+          <div class="temple temple-left"></div>
+          <div class="temple temple-right"></div>
+          <div class="floating-relic relic-1">🏺</div>
+          <div class="floating-relic relic-2">📜</div>
+          <div class="floating-relic relic-3">🧭</div>
+        </div>
+
+        <div class="home-copy">
+          <div class="logo-lockup">
+            <div class="logo-mark">S</div>
+            <div>
+              <p class="eyebrow" data-i18n="adventureAwaits">PENGEMBARAAN MENANTI</p>
+              <h1>Sejarah<span>Go</span></h1>
+            </div>
+          </div>
+          <h2 data-i18n="heroTitle">Lari merentas masa. Cari artifak. Kuasai sejarah.</h2>
+          <p data-i18n="heroBody">Pengembaraan runner interaktif untuk Bab 2, 3 dan 4 Sejarah Tingkatan 1.</p>
+
+          <div class="home-actions">
+            <button class="game-btn game-btn--primary game-btn--xl" data-action="play">
+              <span class="btn-icon">▶</span>
+              <span data-i18n="playAdventure">Mula Pengembaraan</span>
+            </button>
+            <button class="game-btn game-btn--glass" data-action="characters">
+              <span class="btn-icon">🧑‍🚀</span>
+              <span data-i18n="chooseCharacter">Pilih Watak</span>
+            </button>
+          </div>
+
+          <div class="quick-actions">
+            <button data-action="leaderboard"><span>🏆</span><b data-i18n="leaderboard">Kedudukan</b></button>
+            <button data-action="achievements"><span>🎖️</span><b data-i18n="achievements">Pencapaian</b></button>
+            <button data-action="settings"><span>⚙️</span><b data-i18n="settings">Tetapan</b></button>
+          </div>
+        </div>
+
+        <div class="hero-stage">
+          <div class="hero-halo"></div>
+          <div class="hero-platform">
+            <span class="platform-ring ring-a"></span>
+            <span class="platform-ring ring-b"></span>
+          </div>
+          <img id="heroCharacter" class="hero-character" src="assets/characters/cartoon-amir.svg" alt="Selected character" />
+          <div class="character-nameplate">
+            <span id="heroStyleBadge">CARTOON 3D</span>
+            <strong id="heroCharacterName">Pengembara</strong>
+            <small id="heroCharacterRole">Penjelajah Pantas</small>
+          </div>
+          <div class="floating-stat stat-one">⚡ +5s</div>
+          <div class="floating-stat stat-two">🪙 x1.0</div>
+        </div>
+
+        <div class="language-dock" role="group" aria-label="Language">
+          <button class="lang-btn is-active" data-language="ms">🇲🇾 BM</button>
+          <button class="lang-btn" data-language="en">🇬🇧 EN</button>
+        </div>
+      </section>
+
+      <section id="profileScreen" class="screen">
+        <div class="panel profile-panel">
+          <button class="back-btn" data-action="home">← <span data-i18n="back">Kembali</span></button>
+          <div class="panel-heading">
+            <span class="section-kicker" data-i18n="playerProfile">PROFIL PEMAIN</span>
+            <h2 data-i18n="createProfile">Cipta identiti pengembara anda</h2>
+            <p data-i18n="profileHelp">Nama ini digunakan pada papan kedudukan tempatan.</p>
+          </div>
+          <form id="profileForm" class="profile-form">
+            <label>
+              <span data-i18n="playerName">Nama pemain</span>
+              <input id="playerNameInput" maxlength="18" autocomplete="nickname" placeholder="Contoh: Anisah" required />
+            </label>
+            <button class="game-btn game-btn--primary" type="submit" data-i18n="continue">Teruskan</button>
+          </form>
+          <div class="profile-preview">
+            <img id="profilePreviewAvatar" src="assets/characters/cartoon-amir.svg" alt="" />
+            <div>
+              <small data-i18n="currentExplorer">Pengembara semasa</small>
+              <strong id="profilePreviewName">Player</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="characterScreen" class="screen character-screen">
+        <div class="screen-shell wide-shell">
+          <div class="screen-title-row">
+            <div>
+              <span class="section-kicker" data-i18n="characterStudio">STUDIO WATAK</span>
+              <h2 data-i18n="chooseYourExplorer">Pilih pengembara anda</h2>
+              <p data-i18n="chooseStyleHelp">Kedua-dua gaya disediakan: kartun 3D dan penjelajah semi-realistik.</p>
+            </div>
+            <button class="close-btn" data-action="home">×</button>
+          </div>
+
+          <div class="style-switch" role="tablist" aria-label="Character art style">
+            <button class="style-tab is-active" data-style="cartoon" role="tab">
+              <span class="style-icon">🎨</span>
+              <span>
+                <b data-i18n="cartoonStyle">A — Kartun 3D</b>
+                <small data-i18n="cartoonStyleDesc">Ceria, berani dan berwarna-warni</small>
+              </span>
+            </button>
+            <button class="style-tab" data-style="explorer" role="tab">
+              <span class="style-icon">🧭</span>
+              <span>
+                <b data-i18n="explorerStyle">C — Penjelajah Sejarah</b>
+                <small data-i18n="explorerStyleDesc">Semi-realistik dan berciri pengembaraan</small>
+              </span>
+            </button>
+          </div>
+
+          <div class="character-studio">
+            <button id="characterPrev" class="carousel-arrow carousel-arrow--left" aria-label="Previous character">‹</button>
+            <div class="character-carousel" id="characterCarousel" aria-live="polite"></div>
+            <button id="characterNext" class="carousel-arrow carousel-arrow--right" aria-label="Next character">›</button>
+          </div>
+
+          <div class="character-details">
+            <div class="character-identity-card">
+              <span class="rarity-tag" id="characterStyleLabel">CARTOON 3D</span>
+              <label class="character-name-field" for="characterNameInput">
+                <span data-i18n="customCharacterName">Nama watak anda</span>
+                <div class="character-name-input-wrap">
+                  <input id="characterNameInput" maxlength="18" autocomplete="nickname" placeholder="Masukkan nama sendiri" />
+                  <span aria-hidden="true">✎</span>
+                </div>
+                <small data-i18n="customNameHelp">Nama ini akan muncul pada watak, keputusan dan papan kedudukan.</small>
+              </label>
+              <div class="avatar-variant-line">
+                <small data-i18n="avatarType">JENIS AVATAR</small>
+                <strong id="characterVariant">Gaya Pantas</strong>
+              </div>
+              <p id="characterDescription"></p>
+            </div>
+            <div class="ability-card">
+              <span class="ability-icon" id="abilityIcon">⚡</span>
+              <div>
+                <small data-i18n="specialAbility">KEBOLEHAN KHAS</small>
+                <strong id="abilityName"></strong>
+                <p id="abilityDescription"></p>
+              </div>
+            </div>
+            <button id="selectCharacterBtn" class="game-btn game-btn--primary game-btn--select">
+              <span>✓</span><span data-i18n="useCharacter">Gunakan Watak Ini</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="mapScreen" class="screen map-screen">
+        <div class="screen-shell map-shell">
+          <div class="screen-title-row">
+            <div>
+              <span class="section-kicker" data-i18n="timeMap">PETA MASA</span>
+              <h2 data-i18n="selectMission">Pilih misi sejarah</h2>
+              <p id="mapProgressText"></p>
+            </div>
+            <button class="close-btn" data-action="home">×</button>
+          </div>
+
+          <div class="map-layout">
+            <aside class="chapter-legend" id="chapterLegend"></aside>
+            <div class="timeline-map" id="timelineMap">
+              <svg class="map-path" viewBox="0 0 760 1150" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M120 1080 C 620 1000, 130 870, 590 770 S 180 520, 600 400 S 310 180, 620 80" />
+                <path class="map-path-glow" d="M120 1080 C 620 1000, 130 870, 590 770 S 180 520, 600 400 S 310 180, 620 80" />
+              </svg>
+              <div id="mapNodes"></div>
+              <div class="map-runner" id="mapRunner">
+                <img id="mapRunnerImage" src="assets/characters/cartoon-amir.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="runnerScreen" class="screen runner-screen">
+        <div class="runner-wrap">
+          <div class="runner-hud">
+            <div class="hud-left">
+              <button id="pauseBtn" class="hud-btn" aria-label="Pause">Ⅱ</button>
+              <div class="mission-title">
+                <small id="runnerChapterLabel">BAB 2</small>
+                <strong id="runnerStageTitle">Misi 1</strong>
+              </div>
+            </div>
+            <div class="hud-center">
+              <div class="artifact-counter">🏺 <b id="artifactCount">0</b>/<span id="artifactGoal">3</span></div>
+              <div class="runner-progress"><span id="runnerProgressBar"></span></div>
+            </div>
+            <div class="hud-right">
+              <div class="hud-pill">⏱ <b id="timeDisplay">75</b></div>
+              <div class="hud-pill">❤ <b id="lifeDisplay">3</b></div>
+              <div class="hud-pill">🪙 <b id="runCoinDisplay">0</b></div>
+            </div>
+          </div>
+
+          <canvas id="gameCanvas" aria-label="SejarahGo runner game"></canvas>
+
+          <div class="mission-callout" id="missionCallout">
+            <span>🏺</span>
+            <div>
+              <b data-i18n="runnerObjective">OBJEKTIF MISI</b>
+              <p id="missionObjectiveText"></p>
+            </div>
+          </div>
+
+          <div class="runner-controls">
+            <button data-runner-control="left" aria-label="Move left">←</button>
+            <button data-runner-control="jump" class="jump-control" aria-label="Jump">↑</button>
+            <button data-runner-control="slide" aria-label="Slide">↓</button>
+            <button data-runner-control="right" aria-label="Move right">→</button>
+          </div>
+
+          <div id="pauseOverlay" class="pause-overlay is-hidden">
+            <div class="pause-card">
+              <span class="pause-icon">Ⅱ</span>
+              <h2 data-i18n="gamePaused">Permainan Dijeda</h2>
+              <button class="game-btn game-btn--primary" id="resumeBtn" data-i18n="resume">Sambung</button>
+              <button class="game-btn game-btn--glass" id="quitRunBtn" data-i18n="quitMission">Keluar Misi</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaderboardScreen" class="screen">
+        <div class="screen-shell compact-shell">
+          <div class="screen-title-row">
+            <div>
+              <span class="section-kicker" data-i18n="hallOfExplorers">DEWAN PENJELAJAH</span>
+              <h2 data-i18n="leaderboard">Kedudukan</h2>
+            </div>
+            <button class="close-btn" data-action="home">×</button>
+          </div>
+          <div class="podium" id="podium"></div>
+          <div class="ranking-list" id="rankingList"></div>
+        </div>
+      </section>
+
+      <section id="achievementScreen" class="screen">
+        <div class="screen-shell compact-shell">
+          <div class="screen-title-row">
+            <div>
+              <span class="section-kicker" data-i18n="collectionRoom">BILIK KOLEKSI</span>
+              <h2 data-i18n="achievements">Pencapaian</h2>
+            </div>
+            <button class="close-btn" data-action="home">×</button>
+          </div>
+          <div class="achievement-summary" id="achievementSummary"></div>
+          <div class="achievement-grid" id="achievementGrid"></div>
+        </div>
+      </section>
+
+      <section id="settingsScreen" class="screen">
+        <div class="screen-shell settings-shell">
+          <div class="screen-title-row">
+            <div>
+              <span class="section-kicker" data-i18n="controlRoom">BILIK KAWALAN</span>
+              <h2 data-i18n="settings">Tetapan</h2>
+            </div>
+            <button class="close-btn" data-action="home">×</button>
+          </div>
+
+          <div class="settings-grid">
+            <div class="setting-card">
+              <span class="setting-icon">🌐</span>
+              <div>
+                <b data-i18n="language">Bahasa</b>
+                <small data-i18n="languageHelp">Tukar keseluruhan antaramuka dan soalan.</small>
+              </div>
+              <div class="segmented">
+                <button data-language="ms">BM</button>
+                <button data-language="en">EN</button>
+              </div>
+            </div>
+            <div class="setting-card">
+              <span class="setting-icon">🔊</span>
+              <div>
+                <b data-i18n="soundEffects">Kesan Bunyi</b>
+                <small data-i18n="soundHelp">Klik, syiling dan jawapan.</small>
+              </div>
+              <label class="switch"><input id="soundToggle" type="checkbox" checked /><span></span></label>
+            </div>
+            <div class="setting-card">
+              <span class="setting-icon">🎵</span>
+              <div>
+                <b data-i18n="music">Muzik</b>
+                <small data-i18n="musicHelp">Muzik latar sintetik bebas aset.</small>
+              </div>
+              <label class="switch"><input id="musicToggle" type="checkbox" checked /><span></span></label>
+            </div>
+            <div class="setting-card setting-card--range">
+              <span class="setting-icon">🎚️</span>
+              <div>
+                <b data-i18n="volume">Kelantangan</b>
+                <small><span id="volumeValue">65</span>%</small>
+              </div>
+              <input id="volumeRange" type="range" min="0" max="100" value="65" />
+            </div>
+            <div class="setting-card">
+              <span class="setting-icon">✨</span>
+              <div>
+                <b data-i18n="motion">Animasi</b>
+                <small data-i18n="motionHelp">Kurangkan pergerakan visual jika perlu.</small>
+              </div>
+              <label class="switch"><input id="motionToggle" type="checkbox" /><span></span></label>
+            </div>
+            <button id="resetProgressBtn" class="setting-card setting-card--danger">
+              <span class="setting-icon">↺</span>
+              <div>
+                <b data-i18n="resetProgress">Tetapkan Semula Kemajuan</b>
+                <small data-i18n="resetHelp">Memadam skor, syiling dan misi yang dibuka.</small>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="challengeModal" class="modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="challengeTitle">
+      <div class="modal-backdrop"></div>
+      <div class="challenge-card">
+        <div class="challenge-topline">
+          <span class="challenge-badge"><span id="challengeTypeIcon">❓</span> <b id="challengeTypeLabel" data-i18n="challengeGate">CABARAN MISI</b></span>
+          <span class="challenge-timer">⏱ <b id="challengeTimer">30</b></span>
+        </div>
+        <div class="challenge-heading">
+          <div class="challenge-orb">
+            <div class="artifact-rays"></div>
+            <span id="challengeHeroIcon">🏺</span>
+          </div>
+          <div>
+            <small id="challengeMissionLabel">MISI 1</small>
+            <h2 id="challengeTitle">Cabaran Sejarah</h2>
+            <p id="challengeInstruction" data-i18n="challengeInstruction">Selesaikan permainan mini untuk mendapatkan artifak.</p>
+          </div>
+        </div>
+        <div id="challengeBody" class="challenge-body"></div>
+        <div class="challenge-footer">
+          <button id="hintBtn" class="hint-btn">💡 <span data-i18n="hint">Petunjuk</span> <small id="hintCost">−25 🪙</small></button>
+          <span id="challengeFeedback" class="quiz-feedback" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultModal" class="modal is-hidden" role="dialog" aria-modal="true">
+      <div class="modal-backdrop"></div>
+      <div class="result-card">
+        <div id="resultBurst" class="result-burst" aria-hidden="true"></div>
+        <span id="resultIcon" class="result-icon">🏆</span>
+        <span id="resultKicker" class="section-kicker">MISI SELESAI</span>
+        <h2 id="resultTitle">Hebat!</h2>
+        <p id="resultMessage"></p>
+        <div class="star-row" id="resultStars"></div>
+        <div class="result-stats">
+          <div><span>⭐</span><b id="resultScore">0</b><small data-i18n="score">Skor</small></div>
+          <div><span>🪙</span><b id="resultCoins">0</b><small data-i18n="coins">Syiling</small></div>
+          <div><span>🎯</span><b id="resultAccuracy">0%</b><small data-i18n="accuracy">Ketepatan</small></div>
+        </div>
+        <div class="result-actions">
+          <button id="resultPrimaryBtn" class="game-btn game-btn--primary" data-i18n="continueJourney">Teruskan</button>
+          <button id="resultSecondaryBtn" class="game-btn game-btn--glass" data-i18n="retry">Cuba Lagi</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmModal" class="modal is-hidden" role="dialog" aria-modal="true">
+      <div class="modal-backdrop"></div>
+      <div class="confirm-card">
+        <span class="confirm-icon">⚠️</span>
+        <h2 id="confirmTitle"></h2>
+        <p id="confirmMessage"></p>
+        <div class="confirm-actions">
+          <button id="confirmCancel" class="game-btn game-btn--glass" data-i18n="cancel">Batal</button>
+          <button id="confirmAccept" class="game-btn game-btn--danger" data-i18n="confirm">Sahkan</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toastStack" class="toast-stack" aria-live="polite"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

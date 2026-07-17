@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 620" role="img" aria-label="amir cartoon character">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163b5d"/><stop offset="1" stop-color="#081a2d"/></linearGradient>
+      <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#5ce1d6"/><stop offset="1" stop-color="#20c4b8"/></linearGradient>
+      <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4c4a2"/><stop offset=".55" stop-color="#C9875B"/><stop offset="1" stop-color="#7e4a37"/></linearGradient>
+      <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="12" flood-opacity=".35"/></filter>
+      <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <ellipse cx="210" cy="575" rx="120" ry="25" fill="#000" opacity=".28"/>
+    <g filter="url(#shadow)">
+      <path d="M129 327 C93 347 82 402 103 437 C119 462 145 449 153 425 L168 360Z" fill="#ffcb52"/>
+      <path d="M291 327 C327 347 338 402 317 437 C301 462 275 449 267 425 L252 360Z" fill="#ffcb52"/>
+      <path d="M154 292 C118 316 112 376 127 431 L148 488 L272 488 L293 431 C308 376 302 316 266 292Z" fill="url(#shirt)"/>
+      <path d="M167 303 C179 326 241 326 253 303 L250 352 C231 367 189 367 170 352Z" fill="#ffcb52"/>
+      <path d="M181 482 L169 557 C164 580 193 588 204 566 L215 496Z" fill="#20324d"/>
+      <path d="M239 482 L251 557 C256 580 227 588 216 566 L205 496Z" fill="#20324d"/>
+      <path d="M158 557 C170 544 195 545 209 560 C214 570 209 584 198 588 L147 588 C137 584 139 568 158 557Z" fill="#ff6b6b"/>
+      <path d="M262 557 C250 544 225 545 211 560 C206 570 211 584 222 588 L273 588 C283 584 281 568 262 557Z" fill="#ff6b6b"/>
+      <path d="M147 379 C120 382 103 404 109 426 C114 446 137 450 151 433 L177 398Z" fill="url(#skin)"/>
+      <path d="M273 379 C300 382 317 404 311 426 C306 446 283 450 269 433 L243 398Z" fill="url(#skin)"/>
+      
+        <path d="M128 148 C129 89 179 58 232 63 C280 67 310 99 308 151 C293 133 278 128 260 126 C224 123 192 132 162 146 C149 152 138 155 128 148Z" fill="#1c1b1c"/>
+        <path d="M147 108 C168 76 209 65 246 74 C280 83 300 108 302 139 C281 122 258 117 231 119 C197 120 171 129 147 146Z" fill="#1c1b1c"/>
+        
+      <path d="M131 151 C133 103 170 78 216 78 C266 78 304 108 308 159 L302 227 C298 273 265 301 217 303 C166 302 132 274 127 227Z" fill="url(#skin)"/>
+      <ellipse cx="158" cy="205" rx="18" ry="27" fill="#C9875B"/>
+      <ellipse cx="291" cy="205" rx="18" ry="27" fill="#C9875B"/>
+      <ellipse cx="175" cy="185" rx="14" ry="18" fill="#fff"/>
+      <ellipse cx="260" cy="185" rx="14" ry="18" fill="#fff"/>
+      <circle cx="180" cy="187" r="7" fill="#1e2b35"/>
+      <circle cx="255" cy="187" r="7" fill="#1e2b35"/>
+      <circle cx="182" cy="185" r="2.5" fill="#fff"/>
+      <circle cx="257" cy="185" r="2.5" fill="#fff"/>
+      <path d="M164 164 Q181 154 195 165" stroke="#2b1e1b" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M240 165 Q255 154 272 164" stroke="#2b1e1b" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M216 193 C208 219 207 229 221 231" stroke="#88503e" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M181 247 Q217 274 254 247 Q241 285 216 285 Q192 284 181 247Z" fill="#6f2c36"/>
+      <path d="M191 254 Q216 266 244 254" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="145" cy="234" r="13" fill="#f77b84" opacity=".35"/>
+      <circle cx="285" cy="234" r="13" fill="#f77b84" opacity=".35"/>
+      <path d="M155 340 C142 360 146 402 159 431" stroke="#fff" stroke-opacity=".45" stroke-width="5" fill="none"/>
+      <path d="M265 340 C278 360 274 402 261 431" stroke="#000" stroke-opacity=".16" stroke-width="5" fill="none"/>
+      <rect x="190" y="339" width="40" height="37" rx="12" fill="#0b2035" opacity=".8"/>
+      <text x="210" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="#ffcb52">S</text>
+    </g>
+    <g fill="#ffcb52" filter="url(#glow)" opacity=".7">
+      <circle cx="76" cy="169" r="6"/><circle cx="341" cy="127" r="5"/><circle cx="350" cy="330" r="7"/>
+    </g>
+    </svg>

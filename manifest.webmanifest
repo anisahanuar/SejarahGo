@@ -1,0 +1,17 @@
+{
+  "name": "SejarahGo: Multi-Mission Adventure",
+  "short_name": "SejarahGo",
+  "description": "Permainan sejarah dwibahasa dengan sembilan jenis permainan mini.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#06111f",
+  "theme_color": "#081426",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
